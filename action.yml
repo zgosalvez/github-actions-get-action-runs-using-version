@@ -1,0 +1,16 @@
+name: 'Get the GitHub Action runs.using Version'
+description: 'Get the GitHub Action runs.using version from the Action metadata file'
+author: 'Zennon Gosalvez'
+inputs:
+  action-file-path:
+    description: 'The Action metadata file path. Optional. Default: `action.yml`'
+    default: 'action.yml'
+outputs:
+  version:
+    description: 'The runs.using version'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+branding:
+  icon: 'minimize'
+  color: 'blue'

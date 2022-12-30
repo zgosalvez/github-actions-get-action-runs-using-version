@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  security_hardening:
+    name: Check security hardening
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone the repository
+      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
+    - name: Ensure SHA pinned actions
+      uses: zgosalvez/github-actions-ensure-sha-pinned-actions@6ca5574367befbc9efdb2fa25978084159c5902d
+
+  build_test:
+    name: Build & Test
+    needs: security_hardening
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone the repository
+      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
+    - name: Get runs.using version
+      id: get-runs-using-version
+      uses: ./
+    - name: Set up Node
+      uses: actions/setup-node@969bd2663942d722d85b6a8626225850c2f7be4b
+      with:
+        node-version: v${{ steps.get-runs-using-version.outputs.version }}
+    - name: Cache Node Packages
+      id: node-cache
+      uses: actions/cache@56461b9eb0f8438fd15c7a9968e3c9ebb18ceff1
+      with:
+        path: ~/.npm
+        key: node-cache-${{ steps.get-runs-using-version.outputs.prop }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          node-cache-${{ steps.get-runs-using-version.outputs.prop }}-
+          node-cache-
+    - name: Get Node packages
+      run: npm ci
+    - name: Run linter tool
+      run: npm run lint
+    - name: Prepare
+      run: npm run prepare
