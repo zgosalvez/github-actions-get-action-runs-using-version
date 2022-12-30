@@ -14,7 +14,7 @@ For more information on this input, see the [Workflow syntax for GitHub Actions]
 ### Outputs
 For more information on this output, see the [Workflow syntax for GitHub Actions](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs) and the [Context and expression syntax for GitHub Actions](https://docs.github.com/actions/reference/context-and-expression-syntax-for-github-actions#steps-context)
 
-* `version`: The runs.using version. For example, `16` for `node16`'
+* `version`: The runs.using version. For example, `16` for `node16`
 
 ### Common workflow
 
