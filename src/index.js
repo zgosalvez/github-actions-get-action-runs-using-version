@@ -30,6 +30,8 @@ async function run() {
     const firstNumber = using.search(/[0-9]/);
     const version = using.substring(firstNumber);
 
+    console.log('test');
+
     core.setOutput('version', version);
   } catch (error) {
     core.setFailed(error.message);
