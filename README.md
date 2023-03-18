@@ -50,4 +50,4 @@ jobs:
 This is used in the CI workflows of my [GitHub Actions](https://github.com/zgosalvez?tab=repositories&q=github-actions-) repositories, including this one.
 
 ## License
-The scripts and documentation in this project are released under the [MIT License](LICENSE)
+The scripts and documentation in this project are released under the [MIT License](LICENSE.md)
