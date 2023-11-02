@@ -14,14 +14,14 @@ For more information on this input, see the [Workflow syntax for GitHub Actions]
 ### Outputs
 For more information on this output, see the [Workflow syntax for GitHub Actions](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs) and the [Context and expression syntax for GitHub Actions](https://docs.github.com/actions/reference/context-and-expression-syntax-for-github-actions#steps-context)
 
-* `version`: The runs.using version. For example, `16` for `node16`
+* `version`: The runs.using version. For example, `20` for `node20`
 
 ### Common workflow
 
 1. Your `action.yml` file must contain the version under the `runs:using:` key. For example:
 ```yaml
 runs:
-  using: 'node16'
+  using: 'node20'
 ```
 2. Use the action's output as an input to [setup-node action](https://github.com/marketplace/actions/setup-node-js-environment). For example:
 ```yaml

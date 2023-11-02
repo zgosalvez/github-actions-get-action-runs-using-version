@@ -7,9 +7,9 @@ inputs:
     default: 'action.yml'
 outputs:
   version:
-    description: 'The runs.using version'
+    description: 'The runs.using version. For example, `20` for `node20`'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 branding:
   icon: 'minimize'
