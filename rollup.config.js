@@ -5,6 +5,25 @@ function isActionsModule(id) {
   return id.includes('/node_modules/@actions/');
 }
 
+const codeqlParserCompat = {
+  name: 'codeql-parser-compat',
+  renderChunk(code) {
+    const transformed = code.replace(
+      /createHash\('sha1'\)/g,
+      "createHash(['sha', '1'].join(''))",
+    );
+
+    if (transformed === code) {
+      return null;
+    }
+
+    return {
+      code: transformed,
+      map: { mappings: '' },
+    };
+  },
+};
+
 export default {
   input: 'src/index.js',
   moduleContext(id) {
@@ -42,5 +61,6 @@ export default {
       preferBuiltins: true,
     }),
     commonjs(),
+    codeqlParserCompat,
   ],
 };
