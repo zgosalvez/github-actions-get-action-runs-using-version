@@ -2,10 +2,12 @@
   "name": "github-actions-get-action-runs-using-version",
   "version": "1.0.0",
   "description": "Get the GitHub Action runs.using version from the Action metadata file",
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint .",
-    "prepare": "ncc build src/index.js -o dist --source-map --license licenses.txt"
+    "build": "rollup --config",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,9 @@
     "yaml": "^2.8.2"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.38.4",
-    "eslint": "^10.0.3"
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "eslint": "^10.0.3",
+    "rollup": "^4.40.0"
   }
 }
