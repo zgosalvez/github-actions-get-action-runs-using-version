@@ -15,7 +15,7 @@ jobs:
     - name: Clone the repository
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
     - name: Ensure SHA pinned actions
-      uses: zgosalvez/github-actions-ensure-sha-pinned-actions@6124774845927d14c601359ab8138699fa5b70c3
+      uses: zgosalvez/github-actions-ensure-sha-pinned-actions@ca46236c6ce584ae24bc6283ba8dcf4b3ec8a066
 
   build_test:
     name: Build & Test
@@ -32,12 +32,12 @@ jobs:
       id: get-runs-using-version
       uses: ./
     - name: Set up Node
-      uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f
+      uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
       with:
         node-version: v${{ steps.get-runs-using-version.outputs.version }}
     - name: Cache Node Packages
       id: node-cache
-      uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb
+      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
       with:
         path: ~/.npm
         key: node-cache-${{ steps.get-runs-using-version.outputs.prop }}-${{ hashFiles('**/package-lock.json') }}
